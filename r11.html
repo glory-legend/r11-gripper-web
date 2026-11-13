@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ko"><head>
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#dbe1e4">
+    <meta name="description" content="R11 볼트 그리퍼의 집기, 90° 정렬, 인계와 가체결 동작을 살펴봅니다.">
+    <title>R11 볼트 그리퍼</title>
+    
+  <meta name="r11-showcase" content="r11-original-layout-operation-v07"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23185c56' stroke-width='2'/%3E%3C/svg%3E"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+  <script type="module" crossorigin src="./assets/r11-Dmb3nPq6.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/feed-drive-DrGxBGUY.js">
+  <link rel="modulepreload" crossorigin href="./assets/preload-helper-BSYgWHZM.js">
+  <link rel="stylesheet" crossorigin href="./assets/preload-helper-TpoFl-vT.css">
+  <link rel="stylesheet" crossorigin href="./assets/r11-DYapSLqO.css">
+</head>
+  <body class="original-showcase"><div id="principle-backdrop" hidden=""><div id="principle-scroll-host"></div></div>
+    <a class="skip" href="#main">본문으로 건너뛰기</a>
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <svg id="annot" aria-hidden="true"></svg>
+    <div id="tags" aria-hidden="true"></div>
+    <p id="trace-status" aria-hidden="true"></p>
+
+    <header class="topbar">
+      <a class="mark" href="#top" aria-label="R11 볼트 그리퍼, 맨 위로">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10.5"></circle>
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 1.5v5M12 17.5v5M1.5 12h5M17.5 12h5"></path>
+        </svg>
+        <span>R11 볼트 그리퍼</span>
+      </a>
+      <nav aria-label="페이지 목차"><a href="#anatomy">구조</a><a href="#cycle">동작</a><a href="#diet">구동 원리</a><a href="#numbers">수치</a><a href="#cell">로봇 셀</a></nav>
+      <a class="btn small" href="./index.html">시뮬레이터 열기</a>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero" data-chapter="hero">
+        <div class="hero-copy">
+          <h1>볼트를 집고,<br>세우고, 가체결하다.</h1>
+          <p class="lede">두 접촉패드가 볼트를 90° 정렬하고 고정부에 인계합니다.</p>
+          <div class="actions">
+            <a class="btn" href="#cycle">동작 따라가기</a>
+            <a class="btn ghost" href="./index.html">시뮬레이터 열기</a>
+          </div>
+        </div>
+        <table class="titleblock" aria-label="표제란">
+          <tbody><tr><th scope="row">품명</th><td colspan="3">볼트 빈피킹·체결 그리퍼</td></tr><tr><th scope="row">개정</th><td class="rev">R11</td><th scope="row">정렬</th><td>접촉패드 90°</td></tr><tr><th scope="row">본체</th><td>Ø60.5×89 mm</td><th scope="row">노즈</th><td>Ø29×12 mm</td></tr><tr><th scope="row">대상</th><td colspan="3">M6×20 · M8×35</td></tr><tr><th scope="row">인입</th><td>14 mm</td><th scope="row">동작</th><td>48초 예시</td></tr></tbody>
+        </table>
+        <p class="hero-note">동작 개념 시연 · 실제 성능 미검증</p>
+        <p class="no-gl-note">
+          이 브라우저에서는 3D 화면을 표시할 수 없습니다. WebGL을 켠
+          브라우저에서 열면 모델과 동작을 볼 수 있습니다. 아래 설명과 수치는
+          그대로 읽을 수 있습니다.
+        </p>
+      </section>
+
+      <section id="anatomy" class="scrolly" data-chapter="anatomy">
+        <div class="pin">
+          <div class="panel">
+            <h2>본체·파지부·고정부</h2>
+            <p>두 패드가 볼트를 잡아 정렬하고 고정부가 인계받습니다.</p>
+            <ol class="parts" id="parts"></ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="cycle" class="scrolly" data-chapter="cycle">
+        <div class="pin">
+          <div class="panel cycle-panel">
+            <h2>동작 6단계</h2>
+            <p class="stage-count"><span id="stage-no">01</span> / 06 <span class="clock" id="clock">0.0초 / 48초 예시</span></p>
+            <div aria-live="polite">
+              <h3 id="stage-name">몸통 파지</h3>
+              <p id="stage-text">두 접촉패드로 볼트 몸통을 잡습니다.</p>
+              <p class="chip" id="stage-part">파지부 · 접촉패드</p>
+            </div>
+          </div>
+          <ol class="rail" id="rail" aria-label="단계로 이동"></ol>
+        </div>
+      </section>
+
+      <section id="diet" class="scrolly" data-chapter="diet">
+        <div class="pin">
+          <div class="panel">
+            <h2>패드 회전 원리</h2>
+            <ol class="steps" id="steps"><li data-at="0"><b>한쪽 선을 당기고 다른 쪽을 내줍니다.</b></li><li data-at="0.25"><b>선이 드럼을 회전시킵니다.</b></li><li data-at="0.5"><b>축이 패드에 회전을 전달합니다.</b></li><li data-at="0.75"><b>두 패드가 볼트를 90° 회전합니다.</b></li></ol>
+            
+          </div>
+        </div>
+      </section>
+
+      <section id="numbers" class="sheet" data-chapter="numbers">
+        <div class="wrap">
+          <h2>피치만큼, 돌아가며 들어갑니다.</h2>
+          <p class="sub">1회전당 전진 거리입니다.</p>
+          
+          <div class="bars" id="bars"><div class="row"><span class="name">M6 피치</span><div class="pair"><div class="meter r11"><i style="--w:0.56"></i><span>mm / 회전</span></div></div><span class="delta">1.00</span></div><div class="row"><span class="name">M8 피치</span><div class="pair"><div class="meter r11"><i style="--w:0.7"></i><span>mm / 회전</span></div></div><span class="delta">1.25</span></div></div>
+          <p class="foot">별다른 힘 없이 돌아가는 구간까지만 가체결합니다.</p>
+        </div>
+      </section>
+
+      <section id="cell" class="sheet cell" data-chapter="cell">
+        <div class="wrap">
+          <h2>로봇암 동작 예시 · 48초</h2>
+          <p class="sub">집기 · 90° 정렬 · 인계 · 가체결</p>
+          <div class="cell-frame">
+            <div class="cell-view" id="cell-view">
+              <p class="cell-loading" id="cell-loading">
+                FR3 모델을 불러오는 중입니다.
+              </p>
+              <div class="inset-label" id="inset-label" hidden="">
+                <span>그리퍼 확대</span>
+              </div>
+            </div>
+            <div class="cell-controls">
+              <button class="btn" id="cell-play" disabled="">재생</button>
+              <label class="scrub">
+                <span class="sr">사이클 시각</span>
+                <input type="range" id="cell-time" min="0" max="48" step="0.1" value="0" disabled="">
+              </label>
+              <span id="cell-clock">0.0초</span>
+              <label class="speed">
+                <span class="sr">재생 속도</span>
+                <select id="cell-speed" disabled=""><option value="0.5">0.5배속</option><option value="1" selected="">1배속</option><option value="2">2배속</option></select>
+              </label>
+              <fieldset class="seg" id="cell-spec"><legend class="sr">대상 볼트</legend><button data-spec="m8" aria-pressed="true">M8×35</button><button data-spec="m6" aria-pressed="false">M6×20</button></fieldset>
+              <fieldset class="seg" id="cell-views">
+                <legend class="sr">시점</legend>
+                <button data-view="whole" aria-pressed="true" disabled="">
+                  전체
+                </button>
+                <button data-view="detail" aria-pressed="false" disabled="">
+                  그리퍼 확대
+                </button>
+                <button data-view="side" aria-pressed="false" disabled="">
+                  측면
+                </button>
+              <button data-view="fastening" aria-pressed="false">체결부</button></fieldset>
+            </div>
+            <p class="cell-stage" id="cell-stage" aria-live="off"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="kept" class="sheet" data-chapter="kept">
+        <div class="wrap"><h2>조립체 안쪽까지 살펴보세요.</h2><p class="sub">외피를 열고 내부 연결과 동작을 살펴보세요.</p><h3 class="sr">구동 연결 확대도</h3><div id="principle-manual-mount"></div></div>
+      </section>
+
+      <section id="limits" class="sheet dark" data-chapter="limits">
+        <div class="wrap two"><div><h2>전체 동작 보기</h2><p class="sub">파지 · 90° 정렬 · 인계 · 가체결</p></div><div><a class="btn" href="./index.html">전체 시뮬레이터 열기</a><p class="foot">M6×20 · M8×35</p></div></div>
+      </section>
+    </main>
+
+    <footer class="end">
+      <p>R11 볼트 그리퍼</p>
+      <nav aria-label="관련 기록"><a href="./index.html">전체 로봇 시뮬레이터</a><a href="#top">맨 위로 ↑</a></nav>
+    </footer>
+  
+
+</body></html>
