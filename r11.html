@@ -8,12 +8,12 @@
     <meta name="description" content="R11 볼트 그리퍼의 집기, 90° 정렬, 인계와 가체결 동작을 살펴봅니다.">
     <title>R11 볼트 그리퍼</title>
     
-  <meta name="r11-showcase" content="r11-original-layout-operation-v07"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23185c56' stroke-width='2'/%3E%3C/svg%3E"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
-  <script type="module" crossorigin src="./assets/r11-Dmb3nPq6.js"></script>
+  <meta name="r11-showcase" content="r11-original-layout-operation-v08"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23185c56' stroke-width='2'/%3E%3C/svg%3E"><script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+  <script type="module" crossorigin src="./assets/r11-BwIfALpw.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/feed-drive-DrGxBGUY.js">
   <link rel="modulepreload" crossorigin href="./assets/preload-helper-BSYgWHZM.js">
   <link rel="stylesheet" crossorigin href="./assets/preload-helper-TpoFl-vT.css">
-  <link rel="stylesheet" crossorigin href="./assets/r11-DYapSLqO.css">
+  <link rel="stylesheet" crossorigin href="./assets/r11-BjYVSEnP.css">
 </head>
   <body class="original-showcase"><div id="principle-backdrop" hidden=""><div id="principle-scroll-host"></div></div>
     <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -31,7 +31,7 @@
         </svg>
         <span>R11 볼트 그리퍼</span>
       </a>
-      <nav aria-label="페이지 목차"><a href="#anatomy">구조</a><a href="#cycle">동작</a><a href="#diet">구동 원리</a><a href="#numbers">수치</a><a href="#cell">로봇 셀</a></nav>
+      <nav aria-label="페이지 목차"><a href="#anatomy">구조</a><a href="#cycle">동작</a><a href="#diet">구동 원리</a><a href="#numbers">수치</a><a href="#changes">R11 비교</a><a href="#cell">로봇 셀</a></nav>
       <a class="btn small" href="./index.html">시뮬레이터 열기</a>
     </header>
 
@@ -146,6 +146,33 @@
 
       <section id="kept" class="sheet" data-chapter="kept">
         <div class="wrap"><h2>조립체 안쪽까지 살펴보세요.</h2><p class="sub">외피를 열고 내부 연결과 동작을 살펴보세요.</p><h3 class="sr">구동 연결 확대도</h3><div id="principle-manual-mount"></div></div>
+      </section>
+
+      <section id="changes" class="sheet comparison" aria-labelledby="changes-title">
+        <div class="wrap">
+          <h2 id="changes-title">기존 R11과 무엇이 달라지나요?</h2>
+          <p class="sub">기존 R11 브라우저 모델과 현재 수정 목표를 비교합니다. 새 구조는 아직 검토 중입니다.</p>
+          <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="R11과 현재 목표 비교표">
+            <table class="comparison-table">
+              <caption class="sr">기존 R11과 현재 수정 목표의 차이</caption>
+              <thead><tr><th scope="col">항목</th><th scope="col">기존 R11</th><th scope="col">현재 수정 목표</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">90° 정렬</th><td>2관절 엄지가 볼트를 회전</td><td>엄지를 제거하고 양쪽 접촉패드가 볼트를 직접 회전</td></tr>
+                <tr><th scope="row">패드 구동</th><td>엄지로 정렬하는 기존 방식</td><td>모터 → 올덤 커플링 → 인장선 → 패드 전달 경로를 검토 중</td></tr>
+                <tr><th scope="row">대상 볼트</th><td>M6×20 · M8×35 · M10×50</td><td>건조·무윤활 M6×20 · M8×35; M10 제외</td></tr>
+                <tr><th scope="row">본체와 노즈</th><td>본체 Ø60.5×89 mm · 노즈 Ø29×12 mm</td><td>본체와 R11 고정부 크기를 유지</td></tr>
+                <tr><th scope="row">핀셋</th><td>얇은 핀셋으로 볼트 몸통 파지</td><td>길이·폭은 유지; 두께는 조금 늘릴 수 있으나 수치 미선정</td></tr>
+                <tr><th scope="row">인입·수납·복귀</th><td>14 mm 인입 · 29 mm 수납 · 3 mm 척 해제와 리셋</td><td>이 기능을 유지하고 고정부 포획 확인 후 주 파지를 해제</td></tr>
+                <tr><th scope="row">가체결</th><td>기존 체결 동작을 시연</td><td>별다른 힘 없이 돌아가는 구간까지만 진행; 최종 조임 토크 제외</td></tr>
+                <tr><th scope="row">시연 시간</th><td>70초 예시 동작</td><td>48초 예시 동작; 시간 차이는 성능 개선을 뜻하지 않음</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="comparison-summary">
+            <div><h3>핵심 변경</h3><p>엄지의 정렬 역할을 두 구동 패드로 옮기는 것이 목표입니다. 패드 축 지지와 동력 전달, 조립 방법은 함께 검토하고 있습니다.</p></div>
+            <div><h3>유지와 남은 검증</h3><p>본체·고정부 크기와 인입·수납 기능은 유지합니다. 실제 배치·간섭, 패드 지지와 조립, 볼트 인계와 가체결은 검증이 남아 있습니다.</p></div>
+          </div>
+        </div>
       </section>
 
       <section id="limits" class="sheet dark" data-chapter="limits">
